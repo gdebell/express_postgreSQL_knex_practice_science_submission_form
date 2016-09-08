@@ -1,0 +1,37 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <h1>Science Fair Project Proposals</h1>
+  <a href="/projects/new">New Science Project</a>
+  <table class="table table-responsive table-hover">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Student Name</th>
+            <th>Testable Question</th>
+            <th>Class Period</th>
+            <th>Safe</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for proposal in proposals -%}
+          <tr>
+            <td>{{ proposal.project_name }}</td>
+            <td>{{ proposal.student_name }}</td>
+            <td>{{ proposal.class_period }}</td>
+            <td>{{ proposal.testable_question }}</td>
+            <td>{{ proposal.safe }}</td>
+            {% if proposal.safe %}
+            <td class="text-center text-danger"><span class="glyphicon glyphicon-fire"></span></td>
+            {% else %}
+            <td></td>
+            {% endif %}
+          </tr>
+        {%- endfor %}
+        </tbody>
+      </table>
+
+{% endblock %}
